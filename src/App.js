@@ -1,21 +1,64 @@
-import React from 'react';
+import React, {useState, useRef} from 'react';
 import './App.css';
 
+function padTime(time){
+  return time.toString().padStart(2,'0')
+}
+
 export default function App() {
+  const [timeLeft, setTimeLeft] = useState(10)
+  const [title, setTitle] = useState('Let the countdown begin!!')
+  const [isRunning, setIsRunning] = useState(false)
+
+  const clearTimerId = useRef(null)
+  
+  const minutes = padTime(Math.floor(timeLeft/60))
+  const seconds = padTime(timeLeft - minutes * 60)
+  
+  function startTimer(){
+    setIsRunning(true)
+    if (clearTimerId.current !== null) return 
+
+    setTitle(`You're doing great!`)
+    clearTimerId.current = setInterval(() => {
+       setTimeLeft((timeLeft) => {
+        if (timeLeft >= 1) return timeLeft - 1
+        resetTimer()
+        return 0
+        })
+    },1000)
+  } 
+ 
+  function resetTimer(){
+    setIsRunning(false)
+    setTitle('Let the countdown begin!!')
+    clearInterval(clearTimerId.current) // stopping the timer
+    clearTimerId.current = null
+    setTimeLeft(10)
+  }
+ 
+  function stopTimer(){
+    setIsRunning(false)
+    if(clearTimerId.current === null) return 
+    clearInterval(clearTimerId.current)
+    setTitle('keep it up!')
+    clearTimerId.current = null
+  }
+
   return (
     <div className="app">
-      <h2>Pomodoro!</h2>
+      <h2>{title}</h2>
 
       <div className="timer">
-        <span>00</span>
+        <span>{minutes}</span>
         <span>:</span>
-        <span>00</span>
+        <span>{seconds}</span>
       </div>
 
       <div className="buttons">
-        <button>Start</button>
-        <button>Stop</button>
-        <button>Reset</button>
+       {!isRunning ? <button onClick={startTimer}>Start</button> : null}
+        {isRunning ? <button onClick={stopTimer}>Stop</button> : null}
+        {isRunning ? <button onClick={resetTimer}>Reset</button> : null}
       </div>
     </div>
   );
