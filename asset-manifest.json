@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/pomoapp/static/css/main.9c90deed.chunk.css",
+    "main.js": "/pomoapp/static/js/main.43864b95.chunk.js",
+    "main.js.map": "/pomoapp/static/js/main.43864b95.chunk.js.map",
+    "runtime-main.js": "/pomoapp/static/js/runtime-main.edbe5409.js",
+    "runtime-main.js.map": "/pomoapp/static/js/runtime-main.edbe5409.js.map",
+    "static/js/2.cf1a8088.chunk.js": "/pomoapp/static/js/2.cf1a8088.chunk.js",
+    "static/js/2.cf1a8088.chunk.js.map": "/pomoapp/static/js/2.cf1a8088.chunk.js.map",
+    "index.html": "/pomoapp/index.html",
+    "static/css/main.9c90deed.chunk.css.map": "/pomoapp/static/css/main.9c90deed.chunk.css.map",
+    "static/js/2.cf1a8088.chunk.js.LICENSE.txt": "/pomoapp/static/js/2.cf1a8088.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.edbe5409.js",
+    "static/js/2.cf1a8088.chunk.js",
+    "static/css/main.9c90deed.chunk.css",
+    "static/js/main.43864b95.chunk.js"
+  ]
+}
