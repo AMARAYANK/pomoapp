@@ -9,6 +9,7 @@ export default function App() {
   const [timeLeft, setTimeLeft] = useState(25*60)
   const [title, setTitle] = useState('Let the countdown begin!!')
   const [isRunning, setIsRunning] = useState(false)
+  const [isReset, setIsReset] = useState(false)
 
   const clearTimerId = useRef(null)
   
@@ -17,6 +18,7 @@ export default function App() {
   
   function startTimer(){
     setIsRunning(true)
+    setIsReset(true)
     if (clearTimerId.current !== null) return 
 
     setTitle(`You're doing great!`)
@@ -31,6 +33,7 @@ export default function App() {
  
   function resetTimer(){
     setIsRunning(false)
+    setIsReset(false)
     setTitle('Let the countdown begin!!')
     clearInterval(clearTimerId.current) // stopping the timer
     clearTimerId.current = null
@@ -39,6 +42,7 @@ export default function App() {
  
   function stopTimer(){
     setIsRunning(false)
+    setIsReset(true)
     if(clearTimerId.current === null) return 
     clearInterval(clearTimerId.current)
     setTitle('keep it up!')
@@ -58,7 +62,7 @@ export default function App() {
       <div className="buttons">
        {!isRunning ? <button onClick={startTimer}>Start</button> : null}
         {isRunning ? <button onClick={stopTimer}>Stop</button> : null}
-        {isRunning ? <button onClick={resetTimer}>Reset</button> : null}
+        {isReset ? <button onClick={resetTimer}>Reset</button> : null}
       </div>
     </div>
   );
