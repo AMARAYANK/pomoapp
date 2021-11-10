@@ -6,7 +6,7 @@ function padTime(time){
 }
 
 export default function App() {
-  const [timeLeft, setTimeLeft] = useState(10)
+  const [timeLeft, setTimeLeft] = useState(25*60)
   const [title, setTitle] = useState('Let the countdown begin!!')
   const [isRunning, setIsRunning] = useState(false)
 
@@ -34,7 +34,7 @@ export default function App() {
     setTitle('Let the countdown begin!!')
     clearInterval(clearTimerId.current) // stopping the timer
     clearTimerId.current = null
-    setTimeLeft(10)
+    setTimeLeft(25*60)
   }
  
   function stopTimer(){
